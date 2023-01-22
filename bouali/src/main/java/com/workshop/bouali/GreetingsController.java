@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author Chhin_Hua - 21/01
+ * ctrl o: overight methods
+ * ctrl i: implement methods
+ * ctrl alt t: surround with
  **/
 
 @RestController
@@ -22,4 +25,5 @@ public class GreetingsController {
     public ResponseEntity<String> sayGoodBye() {
         return ResponseEntity.ok("Good by and see you later");
     }
+
 }
