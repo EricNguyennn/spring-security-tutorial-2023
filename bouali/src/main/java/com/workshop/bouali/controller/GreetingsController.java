@@ -1,4 +1,4 @@
-package com.workshop.bouali;
+package com.workshop.bouali.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,9 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author Chhin_Hua - 21/01
- * ctrl o: overight methods
- * ctrl i: implement methods
- * ctrl alt t: surround with
  **/
 
 @RestController
@@ -21,9 +18,13 @@ public class GreetingsController {
         return ResponseEntity.ok("Hello from our API");
     }
 
-    @GetMapping("/say-good-bye ")
+    @GetMapping("/say-good-bye")
     public ResponseEntity<String> sayGoodBye() {
         return ResponseEntity.ok("Good by and see you later");
     }
 
+    @GetMapping("/say-love")
+    public ResponseEntity<String> sayLove() {
+        return ResponseEntity.ok("I love U");
+    }
 }
