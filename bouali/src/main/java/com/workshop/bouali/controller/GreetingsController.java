@@ -23,8 +23,4 @@ public class GreetingsController {
         return ResponseEntity.ok("Good by and see you later");
     }
 
-    @GetMapping("/say-love")
-    public ResponseEntity<String> sayLove() {
-        return ResponseEntity.ok("I love U");
-    }
 }
