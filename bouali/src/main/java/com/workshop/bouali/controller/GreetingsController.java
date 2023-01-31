@@ -22,5 +22,6 @@ public class GreetingsController {
     public ResponseEntity<String> sayGoodBye() {
         return ResponseEntity.ok("Good by and see you later");
     }
-
 }
+
+
