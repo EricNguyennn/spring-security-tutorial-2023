@@ -40,7 +40,7 @@ public class JwtUtils {
     }
 
     private Claims extractAllClaims(String token) {
-        return (Claims) Jwts.parser().setSigningKey(jwtSigningKey).parseClaimsJws(token);
+        return Jwts.parser().setSigningKey(jwtSigningKey).parseClaimsJws(token).getBody();
     }
 
     private Boolean isTokenExpired(String token) {
