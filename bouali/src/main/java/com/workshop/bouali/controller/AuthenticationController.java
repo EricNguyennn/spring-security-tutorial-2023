@@ -1,13 +1,13 @@
 package com.workshop.bouali.controller;
 
 import com.workshop.bouali.config.JwtUtils;
+import com.workshop.bouali.dao.UserDao;
 import com.workshop.bouali.dto.AuthenticationRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthenticationController {
 
     private final AuthenticationManager authenticationManager;
-    private final UserDetailsService userDetailsService;
+    private final UserDao userDao;
     private final JwtUtils jwtUtils;
 
     @PostMapping("/authenticate")
@@ -33,7 +33,7 @@ public class AuthenticationController {
         authenticationManager.authenticate(
             new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
         );
-        final UserDetails user = userDetailsService.loadUserByUsername(request.getEmail());
+        final UserDetails user = userDao.findUserByEmail(request.getEmail());
         if (user != null) {
             return ResponseEntity.ok(jwtUtils.generateToken(user));
         }
